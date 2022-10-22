@@ -1,16 +1,65 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UnityEngine.Events;
 using UnityEngine;
 using TMPro;
 public abstract class RegisterData : MonoBehaviour{
     public string rut, nombre, email, dir, comuna;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox;
-    public void GameObjectAssign(){
-        rut = rutBox.GetComponent<TextMeshProUGUI>().text;
-        nombre = nomBox.GetComponent<TextMeshProUGUI>().text;
-        email = mailBox.GetComponent<TextMeshProUGUI>().text;
-        dir = dirBox.GetComponent<TextMeshProUGUI>().text;
-        comuna = comBox.GetComponent<TextMeshProUGUI>().text;
+    public UnityEvent next;
+    public bool GlobalValidador(GameObject error){
+        ErrorMSG(error, "No se ha ingresado el rut del usuario");
+
+        bool rutVal = true, mailVal = true, dirVal = true, comVal = true, nomVal = true;
+        int rutLength = rut.Length, rutNum, rutInt;
+        string rutVer = rut.Substring(rutLength - 2, 1), rutExtract = rut.Substring(0, rutLength - 2);
+
+        string defaultRutMSG = "Se ha ingresado un RUT no valido";
+        //Validador RUT
+        try{
+            rutInt = Convert.ToInt32(rutVer);
+        }
+        catch (Exception e){
+            if (rutVer != "k"){
+                rutVal = ErrorMSG(error, defaultRutMSG);
+                Debug.Log(e);
+            }
+        }
+        try{
+            rutNum = Convert.ToInt32(rutExtract);
+        }
+        catch (Exception e){
+            rutVal = ErrorMSG(error, defaultRutMSG);
+            Debug.Log(e);
+        }
+        if (rutLength > 11){
+            rutVal = ErrorMSG(error, defaultRutMSG);
+        }
+        //Otros validadores
+        if (email.IndexOf("@") < 1 && email.IndexOf(".") < 1){
+            mailVal = ErrorMSG(error, "Se debe ingresar un email valido");
+        }
+        if (nombre.Length < 2){
+            nomVal = ErrorMSG(error, "Se debe ingresar un nombre");
+        }
+        if (dir.Length < 2){
+            nomVal = ErrorMSG(error, "Se debe ingresar su direccion");
+        }
+        if (comuna == "-Seleccione su comuna-"){
+            ErrorMSG(error, "Se debe seleccionar una region");
+        }
+
+        if (rutVal == true && mailVal == true && dirVal == true && comVal == true && nomVal == true){
+            return true;
+        } else {
+            return false;
+        }
+        
     }
-    public abstract void SaveData();
+    public bool ErrorMSG(GameObject error, string errorMSG){
+        error.SetActive(true);
+        error.GetComponent<TextMeshProUGUI>().text = errorMSG;
+        return false;
+    }
+
+    public abstract void Goto();
 }

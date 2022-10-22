@@ -5739,7 +5739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1612433646314470081, guid: 07fb840286a920c44bee12b62bf911dd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1930454723179526031, guid: 07fb840286a920c44bee12b62bf911dd, type: 3}
       propertyPath: m_text
@@ -10455,10 +10455,14 @@ MonoBehaviour:
   mailBox: {fileID: 0}
   dirBox: {fileID: 0}
   comBox: {fileID: 0}
+  next:
+    m_PersistentCalls:
+      m_Calls: []
   apeMaterno: 
   apePaterno: 
   fonBox: {fileID: 0}
   rubBox: {fileID: 0}
+  error: {fileID: 0}
 --- !u!4 &1694686163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1457604303836153036, guid: 4770ad44dbccb0f43b1ac7488a11ba93, type: 3}
@@ -11751,11 +11755,13 @@ MonoBehaviour:
   mailBox: {fileID: 243941558}
   dirBox: {fileID: 276435253}
   comBox: {fileID: 0}
-  fono: 
-  rubro: 
+  next:
+    m_PersistentCalls:
+      m_Calls: []
   fonBox: {fileID: 766283737}
   rubBox: {fileID: 1299963549}
   clientMenu: {fileID: 1984235900}
+  error: {fileID: 0}
 --- !u!95 &1961070247
 Animator:
   serializedVersion: 4
@@ -12587,7 +12593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462941391632326452, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 528797524499929417, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_SizeDelta.x
