@@ -5,7 +5,10 @@ using TMPro;
 
 public class ClientRegister : RegisterData{
     [SerializeField] string fono, rubro;
-    [SerializeField] GameObject fonBox, rubBox;
+    [SerializeField] GameObject fonBox, rubBox, clientMenu;
+    private void Start(){
+        clientMenu.SetActive(false);
+    }
     void Update(){
         GameObjectAssign();
         fono = fonBox.GetComponent<TextMeshProUGUI>().text;
