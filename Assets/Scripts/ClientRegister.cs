@@ -5,7 +5,7 @@ public class ClientRegister : RegisterData {
     string fono, rubro;
     [SerializeField] GameObject fonBox, rubBox, clientMenu, error;
     private void Start() {
-        clientMenu.SetActive(false);
+        error.SetActive(false);
     }
     void Update() {
         rut = rutBox.GetComponent<TextMeshProUGUI>().text;
@@ -18,7 +18,8 @@ public class ClientRegister : RegisterData {
         rubro = rubBox.GetComponent<TextMeshProUGUI>().text;
     }
     public override void Goto(){
-        bool telVal = true, rubVal = true, globalVal = GlobalValidador(error);
+        string errorMsg = GlobalValidador();
+        bool telVal = true, rubVal = true;
         int fonoInt;
 
         //Validadores del numero de telefono
@@ -32,12 +33,14 @@ public class ClientRegister : RegisterData {
         }
         //Otros validadores
         if (rubro.Length < 2){
-            rubVal = ErrorMSG(error, "Se debe ingresar su direccion");
+            rubVal = ErrorMSG(error, "Se debe ingresar el rubro de la empresa");
         }
 
-        if (telVal == true && rubVal == true && globalVal == true){
+        if (telVal == true && rubVal == true && errorMsg == null){
             error.SetActive(false);
             next.Invoke();
+        } else {
+            ErrorMSG(error, errorMsg);
         }
     }
 }

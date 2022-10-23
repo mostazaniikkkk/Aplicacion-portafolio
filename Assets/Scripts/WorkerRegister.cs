@@ -18,7 +18,7 @@ public class WorkerRegister : RegisterData{
         apePaterno = rubBox.GetComponent<TextMeshProUGUI>().text;
     }
     public override void Goto(){
-        bool apMatVal = true, apPatVal = true, globalVal = GlobalValidador(error);
+        bool apMatVal = true, apPatVal = true;
 
         //Validadores
         if (apeMaterno.Length < 2){
@@ -28,7 +28,7 @@ public class WorkerRegister : RegisterData{
             apPatVal = ErrorMSG(error, "Se debe ingresar su apellido materno");
         }
 
-        if (apMatVal == true && apPatVal == true && globalVal == true){
+        if (apMatVal == true && apPatVal == true){
             error.SetActive(false);
             next.Invoke();
         }

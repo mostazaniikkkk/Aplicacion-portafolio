@@ -4,8 +4,9 @@ using System.Diagnostics;
 using System.IO;
 
 public class ClientMenu : MonoBehaviour {
-    bool ingCliente, listCliente, genCliente, exitAnim;
-    [SerializeField] GameObject ingCli, listCli;
+    [SerializeField] bool exitAnim;
+    [SerializeField] GameObject ingCli, listCli, nextObj;
+    bool ingCliente, listCliente, genCliente;
     string[] atrasoClienteNombre, atrasoClienteRUT;
     string[] pagoClienteNombre, pagoClienteRUT;
     int[] pago, deuda, newClientes, totalDeuda;
@@ -14,9 +15,19 @@ public class ClientMenu : MonoBehaviour {
     void Start(){
         
     }
-    public void Goto(GameObject triggered){
-        triggered.SetActive(true);
-        triggered.GetComponent<Animator>().Play(StartupAnim(triggered.name));
+    private void Update(){
+        if(exitAnim == true){
+            Changing(nextObj);
+        }
+    }
+    public void Goto(){
+        GetComponent<Animator>().Play("ClientExit");
+        nextObj = ingCli;
+    }
+    void Changing(GameObject newWin){
+        exitAnim = false;
+        ingCli.SetActive(true);
+        this.gameObject.SetActive(false);
     }
     public void GlobalInform(){
         string varCasos, varAtrasos;
@@ -36,14 +47,5 @@ public class ClientMenu : MonoBehaviour {
 
         File.WriteAllText(@"GeneradorInforme\data.csv", data);
         Process.Start(@"GeneradorInforme\GeneradorCliente.py");
-    }
-    string StartupAnim(string gameObject){
-        string animName = "";
-        switch (gameObject){
-            case "AddClient":
-                animName = "StartupClient";
-                break;
-        }
-        return animName;
     }
 }

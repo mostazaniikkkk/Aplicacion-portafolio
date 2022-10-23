@@ -6,8 +6,9 @@ public abstract class RegisterData : MonoBehaviour{
     public string rut, nombre, email, dir, comuna;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox;
     public UnityEvent next;
-    public bool GlobalValidador(GameObject error){
-        ErrorMSG(error, "No se ha ingresado el rut del usuario");
+    public string GlobalValidador(){
+        string errorReturn;
+        errorReturn = "No se ha ingresado el rut del usuario";
 
         bool rutVal = true, mailVal = true, dirVal = true, comVal = true, nomVal = true;
         int rutLength = rut.Length, rutNum, rutInt;
@@ -20,7 +21,7 @@ public abstract class RegisterData : MonoBehaviour{
         }
         catch (Exception e){
             if (rutVer != "k"){
-                rutVal = ErrorMSG(error, defaultRutMSG);
+                errorReturn = defaultRutMSG;
                 Debug.Log(e);
             }
         }
@@ -28,32 +29,30 @@ public abstract class RegisterData : MonoBehaviour{
             rutNum = Convert.ToInt32(rutExtract);
         }
         catch (Exception e){
-            rutVal = ErrorMSG(error, defaultRutMSG);
+            errorReturn = defaultRutMSG;
             Debug.Log(e);
         }
         if (rutLength > 11){
-            rutVal = ErrorMSG(error, defaultRutMSG);
+            errorReturn = defaultRutMSG;
         }
         //Otros validadores
         if (email.IndexOf("@") < 1 && email.IndexOf(".") < 1){
-            mailVal = ErrorMSG(error, "Se debe ingresar un email valido");
+            errorReturn = "Se debe ingresar un email valido";
         }
         if (nombre.Length < 2){
-            nomVal = ErrorMSG(error, "Se debe ingresar un nombre");
+            errorReturn = "Se debe ingresar un nombre";
         }
-        if (dir.Length < 2){
-            nomVal = ErrorMSG(error, "Se debe ingresar su direccion");
+        if (dir.Length < 2) {
+            errorReturn = "Se debe ingresar su direccion";
         }
         if (comuna == "-Seleccione su comuna-"){
-            ErrorMSG(error, "Se debe seleccionar una region");
+            errorReturn = "Se debe seleccionar una region";
         }
 
         if (rutVal == true && mailVal == true && dirVal == true && comVal == true && nomVal == true){
-            return true;
-        } else {
-            return false;
+            errorReturn = null;
         }
-        
+        return errorReturn;
     }
     public bool ErrorMSG(GameObject error, string errorMSG){
         error.SetActive(true);
