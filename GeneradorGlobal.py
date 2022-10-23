@@ -4,30 +4,26 @@ from reportlab.pdfgen import canvas
 posX = 20
 posY = 810
 
-nomEmpresa = "Metaleria Metalica del cobre y Asociados"
-cantAccidentes = "0"
-porcentaje = "7"
-comp = "mas"
+varCasos = "incremento"
+clienteNuevos = "256"
+porcentaje = "100"
 
-linea00 = "Este informe tiene la finalidad de mostrar las estadisticas de este mes con respecto a la taza de\n accidentes de la empresa " + nomEmpresa + " y un resumen de las\n respuestas que se han dado de parte de nuestra empresa, esto con la finalidad que tenga constancia\n de los eventos ocurridos en este mes."
-linea01 = "En este mes han ocurrido un total de " + cantAccidentes + " accidentes, lo que en comparacion con el mes pasado es un\n " + porcentaje +  "% " + comp + " que el mes pasado."
-linea02 = "Ante estos incidentes la respuesta de parte de nuestra empresa fue la siguiente:"
+cantAtrasos = "256"
+varAtrasos = "incremento"
+porAtrasos = "100"
 
-doc = canvas.Canvas("hola-mundo.pdf")
+linea00 = "Este mes la empresa ha visto un " + varCasos + " lo que en comparacion al mes pasado representa un " + porcentaje +  " %\n de " + varCasos + "en sus clientes."
+linea01 = "De estos clientes un " + cantAtrasos + " se han atrasado con el pago del servicio, esto en contraste al mes pasado\n representa un " + varAtrasos + " del " + porAtrasos + " %. Ante esto se recomienda llegar a una negociacion con el cliente o\n de plano cancelar el contrato a traves del modulo de administracion."
+doc = canvas.Canvas("InformeGlobal.pdf")
 
 parrafo00 = doc.beginText(posX, posY)
 parrafo00.textLines(linea00)
 
-parrafo01 = doc.beginText(posX, posY - 80)
+parrafo01 = doc.beginText(posX, posY - 40)
 parrafo01.textLines(linea01)
-
-
-parrafo02 = doc.beginText(posX, posY - 120)
-parrafo02.textLines(linea02)
 
 doc.drawText(parrafo00)
 doc.drawText(parrafo01)
-doc.drawText(parrafo02)
 
 doc.save()
 os.system("cls")
