@@ -7,12 +7,19 @@ public abstract class RegisterData : MonoBehaviour{
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox;
     public UnityEvent next;
     public string GlobalValidador(){
-        string errorReturn;
-        errorReturn = "No se ha ingresado el rut del usuario";
+        string errorReturn = "No se ha ingresado el rut del usuario";
 
         bool rutVal = true, mailVal = true, dirVal = true, comVal = true, nomVal = true;
-        int rutLength = rut.Length, rutNum, rutInt;
-        string rutVer = rut.Substring(rutLength - 2, 1), rutExtract = rut.Substring(0, rutLength - 2);
+        int rutLength = 0, rutNum, rutInt;
+        string rutVer = "", rutExtract = "";
+
+        try{
+            rutLength = rut.Length;
+            rutVer = rut.Substring(rutLength - 2, 1);
+            rutExtract = rut.Substring(0, rutLength - 2);
+        } catch {
+            return "Se ha ingresado un rut no valido";
+        }
 
         string defaultRutMSG = "Se ha ingresado un RUT no valido";
         //Validador RUT
@@ -46,7 +53,7 @@ public abstract class RegisterData : MonoBehaviour{
             errorReturn = "Se debe ingresar su direccion";
         }
         if (comuna == "-Seleccione su comuna-"){
-            errorReturn = "Se debe seleccionar una region";
+            errorReturn = "Se debe seleccionar una comuna";
         }
 
         if (rutVal == true && mailVal == true && dirVal == true && comVal == true && nomVal == true){

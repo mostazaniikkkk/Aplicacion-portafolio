@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using UnityEngine;
 using TMPro;
 public class ClientRegister : RegisterData {
@@ -17,30 +17,36 @@ public class ClientRegister : RegisterData {
         fono = fonBox.GetComponent<TextMeshProUGUI>().text;
         rubro = rubBox.GetComponent<TextMeshProUGUI>().text;
     }
-    public override void Goto(){
-        string errorMsg = GlobalValidador();
+    public override void Goto() {
+        string errorMsg = GlobalValidador(), collectedData;
         bool telVal = true, rubVal = true;
-        int fonoInt;
+        // int fonoInt;
 
+        ErrorMSG(error, errorMsg);
         //Validadores del numero de telefono
-        try{
+        /* try {
             fonoInt = Convert.ToInt32(fono);
         } catch {
             telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
-        }
-        if (fono.Length != 12){
+            Debug.Log("Efectivamente, hoy gana el nazismo");
+        } */
+        if (fono.Length != 12) {
             telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
+            Debug.Log("Largo del numero: " + fono.Length);
         }
         //Otros validadores
-        if (rubro.Length < 2){
+        if (rubro.Length < 2) {
             rubVal = ErrorMSG(error, "Se debe ingresar el rubro de la empresa");
         }
 
-        if (telVal == true && rubVal == true && errorMsg == null){
+        if (rubVal == true && telVal == true && errorMsg == null) {
+            collectedData = rut + "," + nombre + "," + email + "," + dir + "," + comuna + "," + fono + "," + rubro;
+            Debug.Log("Datos Capturados: " + collectedData);
+
+            File.WriteAllText("datosClientes.csv",collectedData);
+
             error.SetActive(false);
             next.Invoke();
-        } else {
-            ErrorMSG(error, errorMsg);
         }
     }
 }
