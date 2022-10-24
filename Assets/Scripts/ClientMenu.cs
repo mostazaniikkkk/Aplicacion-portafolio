@@ -17,10 +17,11 @@ public class ClientMenu : MonoBehaviour {
     }
     private void Update(){
         if(exitAnim == true){
+            exitAnim = false;
             Changing(nextObj);
         }
     }
-    public void Goto(){
+    public void GotoAdd(){
         GetComponent<Animator>().Play("ClientExit");
         nextObj = ingCli;
     }

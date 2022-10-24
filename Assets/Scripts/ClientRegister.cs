@@ -1,10 +1,11 @@
-using System.IO;
+using System;
 using UnityEngine;
 using TMPro;
 public class ClientRegister : RegisterData {
-    string fono, rubro;
-    [SerializeField] GameObject fonBox, rubBox, clientMenu, error;
+    string rubro;
+    [SerializeField] GameObject rubBox;
     private void Start() {
+        userType = "cliente";
         error.SetActive(false);
     }
     void Update() {
@@ -13,40 +14,28 @@ public class ClientRegister : RegisterData {
         email = mailBox.GetComponent<TextMeshProUGUI>().text;
         dir = dirBox.GetComponent<TextMeshProUGUI>().text;
         comuna = comBox.GetComponent<TextMeshProUGUI>().text;
-
+        provincia = provBox.GetComponent<TextMeshProUGUI>().text;
+        region = regBox.GetComponent<TextMeshProUGUI>().text;
         fono = fonBox.GetComponent<TextMeshProUGUI>().text;
+
         rubro = rubBox.GetComponent<TextMeshProUGUI>().text;
     }
     public override void Goto() {
-        string errorMsg = GlobalValidador(), collectedData;
-        bool telVal = true, rubVal = true;
-        // int fonoInt;
+        DateTime fecha = DateTime.Today;
+        string errorMsg = GlobalValidador();
+        bool rubVal = true, empActiva = true;
 
         ErrorMSG(error, errorMsg);
-        //Validadores del numero de telefono
-        /* try {
-            fonoInt = Convert.ToInt32(fono);
-        } catch {
-            telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
-            Debug.Log("Efectivamente, hoy gana el nazismo");
-        } */
-        if (fono.Length != 12) {
-            telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
-            Debug.Log("Largo del numero: " + fono.Length);
-        }
-        //Otros validadores
+        //Validadores
         if (rubro.Length < 2) {
             rubVal = ErrorMSG(error, "Se debe ingresar el rubro de la empresa");
         }
 
-        if (rubVal == true && telVal == true && errorMsg == null) {
-            collectedData = rut + "," + nombre + "," + email + "," + dir + "," + comuna + "," + fono + "," + rubro;
-            Debug.Log("Datos Capturados: " + collectedData);
-
-            File.WriteAllText("datosClientes.csv",collectedData);
+        if (rubVal == true && errorMsg == null) {
+            collectedData = userType + "," + rutExtract + "," + rutVer + "," + nombre + "," + email + "," + dir + "," + comuna + "," + provincia + "," + region + "," + fono + "," + rubro + "," + empActiva + "," + fecha;
 
             error.SetActive(false);
-            next.Invoke();
+            SendData(collectedData);
         }
     }
 }

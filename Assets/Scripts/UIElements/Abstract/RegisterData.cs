@@ -1,17 +1,15 @@
 using System;
-using UnityEngine.Events;
+using System.IO;
 using UnityEngine;
 using TMPro;
 public abstract class RegisterData : MonoBehaviour{
-    public string rut, nombre, email, dir, comuna;
-    public GameObject rutBox, nomBox, mailBox, dirBox, comBox;
-    public UnityEvent next;
+    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono;
+    public GameObject rutBox, nomBox, mailBox, dirBox, comBox, provBox, regBox, checkObj, fonBox, error;
     public string GlobalValidador(){
         string errorReturn = "No se ha ingresado el rut del usuario";
 
-        bool rutVal = true, mailVal = true, dirVal = true, comVal = true, nomVal = true;
+        bool rutVal = true, mailVal = true, dirVal = true, comVal = true, nomVal = true, provVal = true, regVal = true, telVal = true;
         int rutLength = 0, rutNum, rutInt;
-        string rutVer = "", rutExtract = "";
 
         try{
             rutLength = rut.Length;
@@ -28,7 +26,7 @@ public abstract class RegisterData : MonoBehaviour{
         }
         catch (Exception e){
             if (rutVer != "k"){
-                errorReturn = defaultRutMSG;
+                return defaultRutMSG;
                 Debug.Log(e);
             }
         }
@@ -36,27 +34,43 @@ public abstract class RegisterData : MonoBehaviour{
             rutNum = Convert.ToInt32(rutExtract);
         }
         catch (Exception e){
-            errorReturn = defaultRutMSG;
+            return defaultRutMSG;
             Debug.Log(e);
         }
         if (rutLength > 11){
-            errorReturn = defaultRutMSG;
+            return defaultRutMSG;
+        }
+        //Validadores del numero de telefono
+        /* try {
+            fonoInt = Convert.ToInt32(fono);
+        } catch {
+            telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
+            Debug.Log("Efectivamente, hoy gana el nazismo");
+        } */
+        if (fono.Length != 12){
+            return "Se ha ingresado un numero de telefono no valido";
         }
         //Otros validadores
         if (email.IndexOf("@") < 1 && email.IndexOf(".") < 1){
-            errorReturn = "Se debe ingresar un email valido";
+            return "Se debe ingresar un email valido";
         }
         if (nombre.Length < 2){
-            errorReturn = "Se debe ingresar un nombre";
+            return "Se debe ingresar un nombre";
         }
         if (dir.Length < 2) {
-            errorReturn = "Se debe ingresar su direccion";
+            return "Se debe ingresar su direccion";
         }
         if (comuna == "-Seleccione su comuna-"){
-            errorReturn = "Se debe seleccionar una comuna";
+            return "Se debe seleccionar una comuna";
+        }
+        if (provincia == "-Seleccione su provincia-"){
+            return "Se debe seleccionar una comuna";
+        }
+        if (region == "-Seleccione su region-"){
+            return "Se debe seleccionar una comuna";
         }
 
-        if (rutVal == true && mailVal == true && dirVal == true && comVal == true && nomVal == true){
+        if (rutVal == true && mailVal == true && dirVal == true && comVal == true && nomVal == true && provVal == true && regVal == true && telVal == true){
             errorReturn = null;
         }
         return errorReturn;
@@ -66,6 +80,12 @@ public abstract class RegisterData : MonoBehaviour{
         error.GetComponent<TextMeshProUGUI>().text = errorMSG;
         return false;
     }
+    public void SendData(string collectedData){
+        Debug.Log("Datos Capturados: " + collectedData);
+        File.WriteAllText("datosClientes.csv", collectedData);
 
+        checkObj.SetActive(true);
+        checkObj.GetComponent<AlertBox>().msg = "Se ha registrado el cliente con exito";
+    }
     public abstract void Goto();
 }

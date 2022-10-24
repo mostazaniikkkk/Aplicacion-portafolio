@@ -1,36 +1,23 @@
 using UnityEngine;
 using TMPro;
 public class TopBar : MonoBehaviour{
-    [SerializeField] GameObject resumenGeneral, gestionClientes, gestionProfesionales, ajustes, cerrarSesion, user;
-    [SerializeField] GameObject resWin, gestCliWin, gestProWin, settingWin;
-    string username = "Administrador";
+    [SerializeField] GameObject user, controller;
+    GameObject gestClientes, gestProfesionales, addCliente, addWorker, listCliente, listWorker, ajustes;
     public bool logout;
     void Start(){
-        user.GetComponent<TextMeshPro>().text = username;
+        gestClientes = controller.GetComponent<Controller>().gestClientes;
+        gestProfesionales = controller.GetComponent<Controller>().gestProfesionales;
+        addCliente = controller.GetComponent<Controller>().addCliente;
+        addWorker = controller.GetComponent<Controller>().addWorker;
+        listCliente = controller.GetComponent<Controller>().listCliente;
+        listWorker = controller.GetComponent<Controller>().listWorker;
+        ajustes = controller.GetComponent<Controller>().ajustes;
+
+        user.GetComponent<TextMeshPro>().text = controller.GetComponent<Controller>().username;
     }
     public void Goto(GameObject triggered){
-        resWin.SetActive(false);
-        gestCliWin.SetActive(false);
-        gestProWin.SetActive(false);
-        settingWin.SetActive(false);
+        controller.GetComponent<Controller>().TurnerOff();
 
         triggered.SetActive(true);
-        triggered.GetComponent<Animator>().Play(StartupAnim(triggered.name));
-    }
-    string StartupAnim(string gameObject){
-        string animName = "";
-        switch(gameObject){
-            case "AddClient":
-                animName = "StartupClient";
-                break;
-        }
-        return animName;
-    }
-
-    void Logout(){
-        resWin.SetActive(false);
-        gestCliWin.SetActive(false);
-        gestProWin.SetActive(false);
-        settingWin.SetActive(false);
     }
 }
