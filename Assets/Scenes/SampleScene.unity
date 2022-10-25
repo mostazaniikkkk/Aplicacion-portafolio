@@ -2369,7 +2369,7 @@ Transform:
   m_Children:
   - {fileID: 368928230}
   m_Father: {fileID: 1849447739}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &198507738
 PrefabInstance:
@@ -3398,6 +3398,11 @@ Transform:
   m_Father: {fileID: 1085042316}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &360976228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7882577933156559009, guid: 05937490c31f2a545bd7fac40fb70b49, type: 3}
+  m_PrefabInstance: {fileID: 162012527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &363358222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1612433646314470081, guid: 07fb840286a920c44bee12b62bf911dd, type: 3}
@@ -5686,7 +5691,7 @@ MonoBehaviour:
   gestProfesionales: {fileID: 875223666}
   addCliente: {fileID: 363358222}
   addWorker: {fileID: 873182963}
-  listCliente: {fileID: 0}
+  listCliente: {fileID: 360976228}
   listWorker: {fileID: 1474368830}
   ajustes: {fileID: 384174289}
 --- !u!1001 &539033913
@@ -13013,9 +13018,9 @@ RectTransform:
   - {fileID: 1961070245}
   - {fileID: 1690414967}
   - {fileID: 139628975}
+  - {fileID: 191579285}
   - {fileID: 1474368831}
   - {fileID: 875223663}
-  - {fileID: 191579285}
   - {fileID: 384174290}
   - {fileID: 465816852}
   - {fileID: 162012528}
@@ -16054,7 +16059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1837235214282270647, guid: 9c2c857c7e356f14499f23e6195bd56d, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1837235214282270647, guid: 9c2c857c7e356f14499f23e6195bd56d, type: 3}
       propertyPath: m_LocalPosition.x
