@@ -7,6 +7,7 @@ public class Controller : MonoBehaviour{
     public string username;
     public GameObject login, topBar, gestClientes, gestProfesionales, addCliente, addWorker, listCliente, listWorker, ajustes;
     void Start(){
+        TurnerOff();
         login.SetActive(true);
         topAnim = topBar.GetComponent<Animator>();
     }

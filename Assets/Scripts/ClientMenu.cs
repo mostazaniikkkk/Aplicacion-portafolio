@@ -31,6 +31,7 @@ public class ClientMenu : MonoBehaviour {
         this.gameObject.SetActive(false);
     }
     public void GlobalInform(){
+        /*
         string varCasos, varAtrasos;
 
         //Datos para clientes nuevos
@@ -45,6 +46,8 @@ public class ClientMenu : MonoBehaviour {
 
 
         string data = varCasos + "," + newClientes[0] + "," + porcentajeClientes + "," + totalDeuda[0];
+        */
+        string data = "a,a,a,a,a";
 
         File.WriteAllText(@"GeneradorInforme\data.csv", data);
         Process.Start(@"GeneradorInforme\GeneradorCliente.py");

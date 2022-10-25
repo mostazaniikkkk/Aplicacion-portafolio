@@ -31,7 +31,7 @@ public class WorkerRegister : RegisterData{
             apMatVal = ErrorMSG(error, "Se debe ingresar su apellido materno");
         }
         if (apePaterno.Length < 2){
-            apPatVal = ErrorMSG(error, "Se debe ingresar su apellido materno");
+            apPatVal = ErrorMSG(error, "Se debe ingresar su apellido paterno");
         }
 
         if (apMatVal == true && apPatVal == true && errorMsg == null){

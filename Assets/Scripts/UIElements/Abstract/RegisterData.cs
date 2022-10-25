@@ -85,7 +85,7 @@ public abstract class RegisterData : MonoBehaviour{
         File.WriteAllText("datosClientes.csv", collectedData);
 
         checkObj.SetActive(true);
-        checkObj.GetComponent<AlertBox>().msg = "Se ha registrado el cliente con exito";
+        checkObj.GetComponent<AlertBox>().msg = "Se ha registrado el" + userType +"  con exito";
     }
     public abstract void Goto();
 }
