@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour{
     Animator topAnim;
-    public string username;
+    public string username, dataUrl;
     public GameObject login, topBar, gestClientes, gestProfesionales, addCliente, addWorker, listCliente, listWorker, ajustes;
+    private void Awake(){
+        Application.targetFrameRate = 60;
+    }
     void Start(){
         TurnerOff();
         login.SetActive(true);

@@ -5685,6 +5685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: Administrador
+  dataUrl: https://5ab8-190-114-57-120.sa.ngrok.io
   login: {fileID: 1814485423}
   topBar: {fileID: 559175420}
   gestClientes: {fileID: 1984235900}
@@ -12491,6 +12492,7 @@ MonoBehaviour:
   userType: 
   collectedData: 
   fono: 
+  apiDir: 
   rutBox: {fileID: 491702371}
   nomBox: {fileID: 45928842}
   mailBox: {fileID: 1438362361}
@@ -14146,6 +14148,7 @@ MonoBehaviour:
   userType: 
   collectedData: 
   fono: 
+  apiDir: 
   rutBox: {fileID: 293669697}
   nomBox: {fileID: 1763786335}
   mailBox: {fileID: 243941558}
@@ -14277,8 +14280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitAnim: 0
   ingCli: {fileID: 363358222}
-  listCli: {fileID: 0}
+  listCli: {fileID: 360976228}
   nextObj: {fileID: 0}
+  controller: {fileID: 517687339}
   totalCliPago: 0
   totalCliNoPago: 0
 --- !u!1001 &1994480101
@@ -15276,7 +15280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462941391632326452, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 528797524499929417, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_SizeDelta.x

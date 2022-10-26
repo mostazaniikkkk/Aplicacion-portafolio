@@ -5,7 +5,7 @@ using System.IO;
 
 public class ClientMenu : MonoBehaviour {
     [SerializeField] bool exitAnim;
-    [SerializeField] GameObject ingCli, listCli, nextObj;
+    [SerializeField] GameObject ingCli, listCli, nextObj, controller;
     bool ingCliente, listCliente, genCliente;
     string[] atrasoClienteNombre, atrasoClienteRUT;
     string[] pagoClienteNombre, pagoClienteRUT;
@@ -30,7 +30,10 @@ public class ClientMenu : MonoBehaviour {
         ingCli.SetActive(true);
         this.gameObject.SetActive(false);
     }
-    public void GlobalInform(){
+    public void GlobalInform() {
+        string route = controller.GetComponent<Controller>().dataUrl + "/Ejecutivo";
+        string apiData = File.ReadAllText(route);
+        UnityEngine.Debug.Log(apiData);
         /*
         string varCasos, varAtrasos;
 

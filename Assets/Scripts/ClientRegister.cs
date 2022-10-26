@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 public class ClientRegister : RegisterData {
@@ -37,5 +38,8 @@ public class ClientRegister : RegisterData {
             error.SetActive(false);
             SendData(collectedData);
         }
+    }
+    public override void JsonConstructor(){
+        List
     }
 }

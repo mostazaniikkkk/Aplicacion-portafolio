@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 public abstract class RegisterData : MonoBehaviour{
-    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono;
+    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono, apiDir;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox, provBox, regBox, checkObj, fonBox, error;
     public string GlobalValidador(){
         string errorReturn = "No se ha ingresado el rut del usuario";
@@ -83,9 +83,7 @@ public abstract class RegisterData : MonoBehaviour{
     public void SendData(string collectedData){
         Debug.Log("Datos Capturados: " + collectedData);
         File.WriteAllText("datosClientes.csv", collectedData);
-
-        checkObj.SetActive(true);
-        checkObj.GetComponent<AlertBox>().msg = "Se ha registrado el" + userType +"  con exito";
     }
+    public abstract void JsonConstructor();
     public abstract void Goto();
 }
