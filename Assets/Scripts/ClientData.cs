@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ClientData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class ClientData : TableData {
+    [SerializeField] string deuda;
+    string active, fechaCreacion, fechaInicio;
+    int id, pos;
+    [SerializeField] GameObject deudaTxt;
+    void Start(){
+        rutTxt.GetComponent<TextMeshProUGUI>().text = rut;
+        nombreTxt.GetComponent<TextMeshProUGUI>().text = nombre;
+        direccionTxt.GetComponent<TextMeshProUGUI>().text = direccion;
+        rubroTxt.GetComponent<TextMeshProUGUI>().text = rubro;
+        emailTxt.GetComponent<TextMeshProUGUI>().text = email;
+        telefonoTxt.GetComponent<TextMeshProUGUI>().text = telefono;
+        deudaTxt.GetComponent<TextMeshProUGUI>().text = deuda;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Goto(){
+        this.GetComponent<GameObject>().SetActive(false);
+        nextWin.SetActive(true);
     }
 }

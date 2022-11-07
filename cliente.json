@@ -1,0 +1,17 @@
+[
+  {
+    "nom_empresa": "a​",
+    "fecha_inicio": "2022-10-26T00:00:00-03:00",
+    "direccion": "c​",
+    "email": "@.​",
+    "telefono": "12345678900​",
+    "flag_activo": true,
+    "fecha_creacion": "2022-10-26T00:00:00-03:00",
+    "rutVer": "k",
+    "rutNum": "123456789",
+    "comuna": "d​",
+    "provincia": "e​",
+    "region": "Cerro Navia",
+    "rubro": "b​"
+  }
+]

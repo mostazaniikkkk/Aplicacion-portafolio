@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Newtonsoft.Json;
 
 public class WorkerRegister : RegisterData{
     string apeMaterno, apePaterno;
     [SerializeField] GameObject apeMatBox, apePatBox;
     void Start(){
+        url = "ejecutivoSave";
         userType = "ejecutivo";
         error.SetActive(false);
     }
@@ -35,10 +38,31 @@ public class WorkerRegister : RegisterData{
         }
 
         if (apMatVal == true && apPatVal == true && errorMsg == null){
-            collectedData = userType + "," + rutExtract + "," + rutVer + "," + nombre + "," + email + "," + dir + "," + comuna + "," + provincia + "," + region + "," + apeMaterno + "," + apePaterno + "," + workActivo;
-
             error.SetActive(false);
-            SendData(collectedData);
+            SendData();
         }
+    }
+
+    public override string JsonConstructor() {
+        List<Trabajador> trabajador = new List<Trabajador> {
+            new Trabajador{
+                idEjecutivo = 0,
+                idComuna = comuna,
+                ejeRut = rutExtract,
+                ejeDvRut = rutVer,
+                ejeName = nombre,
+                ejePaterno = apePaterno,
+                ejeMaterno = apeMaterno,
+                ejeTelefono = fono,
+                flagActivo = "1",
+                ejeMail = email,
+                ejeDireccion = dir
+            }
+        };
+        string generatedJson = JsonConvert.SerializeObject(trabajador.ToArray(), Formatting.Indented);
+        SendRequest(generatedJson, controller.GetComponent<Controller>().dataUrl + url);
+
+        Debug.Log(generatedJson);
+        return generatedJson;
     }
 }

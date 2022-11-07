@@ -1,13 +1,16 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Newtonsoft.Json;
+using UnityEngine.Networking;
 public class ClientRegister : RegisterData {
     string rubro;
     [SerializeField] GameObject rubBox;
     private void Start() {
         userType = "cliente";
         error.SetActive(false);
+        url = "/empresa/save";
     }
     void Update() {
         rut = rutBox.GetComponent<TextMeshProUGUI>().text;
@@ -20,9 +23,12 @@ public class ClientRegister : RegisterData {
         fono = fonBox.GetComponent<TextMeshProUGUI>().text;
 
         rubro = rubBox.GetComponent<TextMeshProUGUI>().text;
+
+        if (exitAnim == true){
+            NextWin();
+        }
     }
     public override void Goto() {
-        DateTime fecha = DateTime.Today;
         string errorMsg = GlobalValidador();
         bool rubVal = true, empActiva = true;
 
@@ -33,13 +39,31 @@ public class ClientRegister : RegisterData {
         }
 
         if (rubVal == true && errorMsg == null) {
-            collectedData = userType + "," + rutExtract + "," + rutVer + "," + nombre + "," + email + "," + dir + "," + comuna + "," + provincia + "," + region + "," + fono + "," + rubro + "," + empActiva + "," + fecha;
-
             error.SetActive(false);
-            SendData(collectedData);
+            SendData();
         }
     }
-    public override void JsonConstructor(){
-        List
+    public override string JsonConstructor(){
+        List<Cliente> cliente = new List<Cliente> {
+            new Cliente{
+                nomEmpresa = nombre,
+                fechaInicio = DateTime.Today,
+                email = email,
+                telefono = fono,
+                direccion = dir,
+                idComuna = comuna,
+                flagActivo = "1",
+                fechaCreacion = DateTime.Today,
+                rutEmpresa = rutExtract,
+                dvEmpresa = rutVer,
+                idRubro = rubro,
+                estado = "aaaa"
+            }
+        };
+        string generatedJson = JsonConvert.SerializeObject(cliente.ToArray(), Formatting.Indented);
+
+        SendRequest(generatedJson, controller.GetComponent<Controller>().dataUrl + url);
+        Debug.Log(generatedJson);
+        return generatedJson;
     }
 }

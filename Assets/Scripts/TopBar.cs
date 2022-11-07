@@ -1,8 +1,8 @@
 using UnityEngine;
 using TMPro;
-public class TopBar : MonoBehaviour{
-    [SerializeField] GameObject user, controller;
-    GameObject gestClientes, gestProfesionales, addCliente, addWorker, listCliente, listWorker, ajustes;
+public class TopBar : Window{
+    [SerializeField] GameObject user;
+    AnimatorClipInfo[] info;
     public bool logout;
     void Start(){
         gestClientes = controller.GetComponent<Controller>().gestClientes;
@@ -17,6 +17,7 @@ public class TopBar : MonoBehaviour{
     }
     public void Goto(GameObject triggered){
         controller.GetComponent<Controller>().TurnerOff();
+        info = this.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
 
         triggered.SetActive(true);
     }

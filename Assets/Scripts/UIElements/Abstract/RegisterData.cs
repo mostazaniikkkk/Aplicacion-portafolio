@@ -2,8 +2,10 @@ using System;
 using System.IO;
 using UnityEngine;
 using TMPro;
-public abstract class RegisterData : MonoBehaviour{
-    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono, apiDir;
+using UnityEngine.Networking;
+using System.Collections;
+public abstract class RegisterData : Window{
+    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono, apiDir, url;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox, provBox, regBox, checkObj, fonBox, error;
     public string GlobalValidador(){
         string errorReturn = "No se ha ingresado el rut del usuario";
@@ -27,7 +29,6 @@ public abstract class RegisterData : MonoBehaviour{
         catch (Exception e){
             if (rutVer != "k"){
                 return defaultRutMSG;
-                Debug.Log(e);
             }
         }
         try{
@@ -35,7 +36,6 @@ public abstract class RegisterData : MonoBehaviour{
         }
         catch (Exception e){
             return defaultRutMSG;
-            Debug.Log(e);
         }
         if (rutLength > 11){
             return defaultRutMSG;
@@ -80,10 +80,22 @@ public abstract class RegisterData : MonoBehaviour{
         error.GetComponent<TextMeshProUGUI>().text = errorMSG;
         return false;
     }
-    public void SendData(string collectedData){
-        Debug.Log("Datos Capturados: " + collectedData);
-        File.WriteAllText("datosClientes.csv", collectedData);
+    public void SendData(){
+        string data = JsonConstructor();
+        File.WriteAllText("cliente.json", data);
     }
-    public abstract void JsonConstructor();
+    IEnumerator Request(string json, string url){
+        WWWForm form = new WWWForm();
+        using (UnityWebRequest request = UnityWebRequest.Post(url, json)){
+            yield return request.SendWebRequest();
+            if(request.isNetworkError || request.isHttpError){
+                Debug.Log("No se ha pódido conectar con el servidor");
+            } else {
+                string a = request.downloadHandler.text;
+            }
+        }
+    }
+    public void SendRequest(string json, string url) => StartCoroutine(Request(json, url));
+    public abstract string JsonConstructor();
     public abstract void Goto();
 }
