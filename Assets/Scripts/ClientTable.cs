@@ -17,6 +17,8 @@ public class ClientTable : ClientData {
     }
 
     public void ProccessJson(){
+        jsonData = jsonData.Replace("\"fechaInicio\":null", "\"fechaInicio\":\"2022-10-10T03:00:00.000+00:00\"");
+        Debug.Log(jsonData);
         var data = JsonConvert.DeserializeObject<List<Cliente>>(jsonData);
         for (int counter = 0; counter < data.Count; counter++) {
             GameObject column = Instantiate(dataColumn, table.transform);

@@ -81,6 +81,16 @@ public class Controller : MonoBehaviour{
             nextEvent.Invoke();
         }
     }
+    string NgrokReader(){
+        string archivo = "Ngrok.txt", url;
+        if (!File.Exists(archivo)){
+            File.Create(archivo);
+        }
+        url = File.ReadAllText(archivo);
+        Debug.Log(url);
+
+        return url;
+    }
     public void SendInfo(string url, GameObject window, UnityEvent nextEvent) => StartCoroutine(GetInfo(url, window, nextEvent));
     #endregion
 

@@ -47,8 +47,9 @@ public class ClientMenu : Window {
         string globalData = JsonConvert.SerializeObject(pyData, Formatting.Indented);
 
         File.WriteAllText(@"GeneradorInforme\data.json", globalData);
-        Process.Start(@"GeneradorInforme\GeneradorCliente.py");
         */
+        Process.Start(@"GeneradorInforme\GeneradorCliente.py");
+        
         
     }
 }

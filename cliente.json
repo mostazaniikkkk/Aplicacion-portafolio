@@ -1,17 +1,17 @@
 [
   {
-    "nom_empresa": "a​",
-    "fecha_inicio": "2022-10-26T00:00:00-03:00",
-    "direccion": "c​",
-    "email": "@.​",
-    "telefono": "12345678900​",
-    "flag_activo": true,
-    "fecha_creacion": "2022-10-26T00:00:00-03:00",
-    "rutVer": "k",
-    "rutNum": "123456789",
-    "comuna": "d​",
-    "provincia": "e​",
-    "region": "Cerro Navia",
-    "rubro": "b​"
+    "idEmpresa": 0,
+    "nomEmpresa": "Tricolor SA​",
+    "fechaInicio": "2022-11-30T00:00:00-03:00",
+    "direccion": "dir 123​",
+    "email": "asd@ast.ag​",
+    "telefono": "+5696543893​",
+    "flagActivo": "1",
+    "fechaCreacion": "2022-11-30T00:00:00-03:00",
+    "rutEmpresa": "123456734",
+    "dvEmpresa": "k",
+    "idComuna": "0​",
+    "idRubro": "1​",
+    "estado": "aaaa"
   }
 ]

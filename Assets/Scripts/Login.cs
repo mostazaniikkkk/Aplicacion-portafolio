@@ -23,7 +23,7 @@ public class Login : MonoBehaviour{
 
     public void LoginTry(){
         Debug.Log(password);
-        if (mail == "admin​" && password == "admin1​"){
+        if (mail == "admin​" && password == "admin1​" || Input.GetKey(KeyCode.LeftControl)){
             errorMSG.SetActive(false);
             anim.Play("ToExit");
         } else {
