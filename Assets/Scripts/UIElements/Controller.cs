@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour{
         Application.targetFrameRate = 60;
     }
     void Start(){
+        dataID = NgrokReader();
         dataUrl = "https://" + dataID + ".sa.ngrok.io";
         TurnerOff();
         login.SetActive(true);

@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Threading.Tasks;
+using System.Text;
 public abstract class RegisterData : Window{
     public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono, apiDir, url;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox, provBox, regBox, checkObj, fonBox, error;
@@ -85,14 +87,23 @@ public abstract class RegisterData : Window{
         File.WriteAllText("cliente.json", data);
     }
     IEnumerator Request(string json, string url){
-        WWWForm form = new WWWForm();
-        using (UnityWebRequest request = UnityWebRequest.Post(url, json)){
-            yield return request.SendWebRequest();
-            if(request.isNetworkError || request.isHttpError){
-                Debug.Log("No se ha pódido conectar con el servidor");
-            } else {
-                string a = request.downloadHandler.text;
-            }
+        using UnityWebRequest request = UnityWebRequest.Post(url, "POST");
+        request.SetRequestHeader("Content-Type", "application/json");
+        byte[] jsonData = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(jsonData);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        yield return request.SendWebRequest();
+
+        switch (request.result){
+            case UnityWebRequest.Result.InProgress:
+                Debug.Log("Subiendo archivo...");
+                break;
+            case UnityWebRequest.Result.Success:
+                Debug.Log("SIUUUUUUUUUUUUUUUUUUUUUU");
+                break;
+            default:
+                Debug.Log("Toca revisar que paso xdn´t");
+                break;
         }
     }
     public void SendRequest(string json, string url) => StartCoroutine(Request(json, url));

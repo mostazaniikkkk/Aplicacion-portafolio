@@ -17,7 +17,7 @@ public class WorkerTable : WorkerData{
 
     public void ProccessJson(){
         var data = JsonConvert.DeserializeObject<List<Trabajador>>(jsonData);
-        Debug.Log(data);
+        Debug.Log(jsonData);
         for (int counter = 0; counter < data.Count; counter++){
             GameObject column = Instantiate(dataColumn, table.transform);
             columnInfo = column.GetComponent<WorkerData>();

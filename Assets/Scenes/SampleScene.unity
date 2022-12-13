@@ -5120,7 +5120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462941391632326452, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 520159853673543661, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_Name
@@ -9372,7 +9372,7 @@ MonoBehaviour:
   apeMatTxt: {fileID: 0}
   apePatTxt: {fileID: 0}
   controller: {fileID: 517687339}
-  dataColumn: {fileID: 4181957788811795030, guid: 9af36076bcc7bc2488480b1e18262ae2, type: 3}
+  dataColumn: {fileID: 4181957788811795030, guid: 9bf8f9144511dd54cb032cd427c4ffb0, type: 3}
   table: {fileID: 1402004996}
   nextEvent:
     m_PersistentCalls:
@@ -11461,7 +11461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462941391632326452, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 520159853673543661, guid: 109bf02e1ebe97a4699a7ec4a8e9dd7b, type: 3}
       propertyPath: m_IsActive
@@ -12328,6 +12328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1849447739}
     m_Modifications:
+    - target: {fileID: 1700039836715294631, guid: f5907329c04ff314c98d5504a9770ae4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1779320090790928736, guid: f5907329c04ff314c98d5504a9770ae4, type: 3}
       propertyPath: m_Size.y
       value: 0.99321795
@@ -12397,6 +12401,10 @@ PrefabInstance:
       value: UserView
       objectReference: {fileID: 0}
     - target: {fileID: 3025070292063836406, guid: f5907329c04ff314c98d5504a9770ae4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113746516020760894, guid: f5907329c04ff314c98d5504a9770ae4, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -12680,7 +12688,7 @@ PrefabInstance:
       objectReference: {fileID: 1814485423}
     - target: {fileID: 7858078393197085495, guid: 5a6c1d690aad18c439560262b0cff7ce, type: 3}
       propertyPath: dataID
-      value: 06d2-201-188-226-84
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7858078393197085495, guid: 5a6c1d690aad18c439560262b0cff7ce, type: 3}
       propertyPath: topBar
@@ -13006,6 +13014,10 @@ PrefabInstance:
     - target: {fileID: 8651400032757921246, guid: 0676054c9ac2d0446984af79b5e74229, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651400033058542700, guid: 0676054c9ac2d0446984af79b5e74229, type: 3}
+      propertyPath: m_text
+      value: Nombre de usuario
       objectReference: {fileID: 0}
     - target: {fileID: 8651400033551129486, guid: 0676054c9ac2d0446984af79b5e74229, type: 3}
       propertyPath: m_LocalPosition.x

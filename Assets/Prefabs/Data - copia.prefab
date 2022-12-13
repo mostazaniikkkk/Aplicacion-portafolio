@@ -903,12 +903,12 @@ MonoBehaviour:
   rubro: 
   email: 
   telefono: 
-  rutTxt: {fileID: 0}
-  nombreTxt: {fileID: 0}
-  direccionTxt: {fileID: 0}
-  rubroTxt: {fileID: 0}
-  emailTxt: {fileID: 0}
-  telefonoTxt: {fileID: 0}
+  rutTxt: {fileID: 6522680561999973061}
+  nombreTxt: {fileID: 4494061360105340079}
+  direccionTxt: {fileID: 8163819645553770049}
+  rubroTxt: {fileID: 1534934611991394913}
+  emailTxt: {fileID: 7325007633476102534}
+  telefonoTxt: {fileID: 6539713528201981091}
   boton: {fileID: 0}
   nextWin: {fileID: 0}
   apeMatTxt: {fileID: 0}

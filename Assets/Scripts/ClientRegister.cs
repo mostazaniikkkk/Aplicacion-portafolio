@@ -57,7 +57,7 @@ public class ClientRegister : RegisterData {
                 rutEmpresa = rutExtract,
                 dvEmpresa = rutVer,
                 idRubro = rubro,
-                estado = "aaaa"
+                estado = null
             }
         };
         string generatedJson = JsonConvert.SerializeObject(cliente.ToArray(), Formatting.Indented);

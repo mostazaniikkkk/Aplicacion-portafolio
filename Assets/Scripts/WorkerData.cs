@@ -6,7 +6,7 @@ using TMPro;
 public class WorkerData : TableData {
     string apeMaterno, apePaterno;
     [SerializeField] GameObject apeMatTxt, apePatTxt;
-    void Start(){
+    void Update(){
         rutTxt.GetComponent<TextMeshProUGUI>().text = rut;
         nombreTxt.GetComponent<TextMeshProUGUI>().text = nombre;
         direccionTxt.GetComponent<TextMeshProUGUI>().text = direccion;
