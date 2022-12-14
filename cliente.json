@@ -1,17 +1,17 @@
 [
   {
     "idEmpresa": 0,
-    "nomEmpresa": "asd​",
+    "nomEmpresa": "atata​",
     "fechaInicio": "2022-12-13T00:00:00-03:00",
-    "direccion": "0​",
-    "email": "@.a​",
-    "telefono": "12345678909​",
+    "direccion": "atata 123​",
+    "email": "asd@.as​",
+    "telefono": 0,
     "flagActivo": "1",
     "fechaCreacion": "2022-12-13T00:00:00-03:00",
     "rutEmpresa": "123456789",
     "dvEmpresa": "0",
-    "idComuna": "0​",
-    "idRubro": "0​",
-    "estado": "aaaa"
+    "idComuna": 0,
+    "idRubro": 0,
+    "estado": null
   }
 ]

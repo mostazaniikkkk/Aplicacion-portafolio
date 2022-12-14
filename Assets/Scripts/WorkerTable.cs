@@ -28,7 +28,7 @@ public class WorkerTable : WorkerData{
             columnInfo.nombre = string.Format(data[counter].ejeName);
             columnInfo.direccion = string.Format(data[counter].ejeDireccion);
             columnInfo.email = string.Format(data[counter].ejeMail);
-            columnInfo.telefono = string.Format(data[counter].ejeTelefono);
+            columnInfo.telefono = data[counter].ejeTelefono;
         }
     }
 }

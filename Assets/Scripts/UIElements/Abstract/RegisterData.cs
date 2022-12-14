@@ -7,7 +7,8 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Text;
 public abstract class RegisterData : Window{
-    public string rut, nombre, email, dir, comuna, provincia, region, rutExtract, rutVer, userType, collectedData, fono, apiDir, url;
+    public int comuna, fono;
+    public string rut, nombre, email, dir, provincia, region, rutExtract, rutVer, userType, collectedData, apiDir, url, strComuna, strFono;
     public GameObject rutBox, nomBox, mailBox, dirBox, comBox, provBox, regBox, checkObj, fonBox, error;
     public string GlobalValidador(){
         string errorReturn = "No se ha ingresado el rut del usuario";
@@ -49,7 +50,7 @@ public abstract class RegisterData : Window{
             telVal = ErrorMSG(error, "Se ha ingresado un numero de telefono no valido");
             Debug.Log("Efectivamente, hoy gana el nazismo");
         } */
-        if (fono.Length != 12){
+        if (strFono.Length != 12){
             return "Se ha ingresado un numero de telefono no valido";
         }
         //Otros validadores
@@ -62,7 +63,7 @@ public abstract class RegisterData : Window{
         if (dir.Length < 2) {
             return "Se debe ingresar su direccion";
         }
-        if (comuna == "-Seleccione su comuna-"){
+        if (strComuna == "-Seleccione su comuna-"){
             return "Se debe seleccionar una comuna";
         }
         if (provincia == "-Seleccione su provincia-"){

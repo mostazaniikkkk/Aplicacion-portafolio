@@ -12,9 +12,9 @@ public class ClientData : TableData {
         rutTxt.GetComponent<TextMeshProUGUI>().text = rut;
         nombreTxt.GetComponent<TextMeshProUGUI>().text = nombre;
         direccionTxt.GetComponent<TextMeshProUGUI>().text = direccion;
-        rubroTxt.GetComponent<TextMeshProUGUI>().text = rubro;
+        rubroTxt.GetComponent<TextMeshProUGUI>().text = rubro.ToString();
         emailTxt.GetComponent<TextMeshProUGUI>().text = email;
-        telefonoTxt.GetComponent<TextMeshProUGUI>().text = telefono;
+        telefonoTxt.GetComponent<TextMeshProUGUI>().text = telefono.ToString();
         deudaTxt.GetComponent<TextMeshProUGUI>().text = deuda;
     }
     public override void Goto(){

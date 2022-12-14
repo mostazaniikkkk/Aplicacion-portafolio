@@ -5,7 +5,8 @@ using TMPro;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
 public class ClientRegister : RegisterData {
-    string rubro;
+    int rubro;
+    string strRubro;
     [SerializeField] GameObject rubBox;
     private void Start() {
         userType = "cliente";
@@ -17,12 +18,16 @@ public class ClientRegister : RegisterData {
         nombre = nomBox.GetComponent<TextMeshProUGUI>().text;
         email = mailBox.GetComponent<TextMeshProUGUI>().text;
         dir = dirBox.GetComponent<TextMeshProUGUI>().text;
-        comuna = comBox.GetComponent<TextMeshProUGUI>().text;
+        strComuna = comBox.GetComponent<TextMeshProUGUI>().text;
         provincia = provBox.GetComponent<TextMeshProUGUI>().text;
         region = regBox.GetComponent<TextMeshProUGUI>().text;
-        fono = fonBox.GetComponent<TextMeshProUGUI>().text;
+        strFono = fonBox.GetComponent<TextMeshProUGUI>().text;
 
-        rubro = rubBox.GetComponent<TextMeshProUGUI>().text;
+        strRubro = rubBox.GetComponent<TextMeshProUGUI>().text;
+
+        rubro = Int32.Parse(strRubro);
+        comuna = Int32.Parse(strComuna);
+        fono = Int32.Parse(strFono);
 
         if (exitAnim == true){
             NextWin();
@@ -34,7 +39,7 @@ public class ClientRegister : RegisterData {
 
         ErrorMSG(error, errorMsg);
         //Validadores
-        if (rubro.Length < 2) {
+        if (strRubro.Length < 2) {
             rubVal = ErrorMSG(error, "Se debe ingresar el rubro de la empresa");
         }
 

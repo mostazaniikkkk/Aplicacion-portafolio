@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Newtonsoft.Json;
+using System;
 
 public class WorkerRegister : RegisterData{
     string apeMaterno, apePaterno;
@@ -16,13 +17,16 @@ public class WorkerRegister : RegisterData{
         nombre = nomBox.GetComponent<TextMeshProUGUI>().text;
         email = mailBox.GetComponent<TextMeshProUGUI>().text;
         dir = dirBox.GetComponent<TextMeshProUGUI>().text;
-        comuna = comBox.GetComponent<TextMeshProUGUI>().text;
+        strComuna = comBox.GetComponent<TextMeshProUGUI>().text;
         provincia = provBox.GetComponent<TextMeshProUGUI>().text;
         region = regBox.GetComponent<TextMeshProUGUI>().text;
-        fono = fonBox.GetComponent<TextMeshProUGUI>().text;
+        strFono = fonBox.GetComponent<TextMeshProUGUI>().text;
 
         apeMaterno = apeMatBox.GetComponent<TextMeshProUGUI>().text;
         apePaterno = apePatBox.GetComponent<TextMeshProUGUI>().text;
+
+        comuna = Int32.Parse(strComuna);
+        fono = Int32.Parse(strFono);
     }
     public override void Goto(){
         bool apMatVal = true, apPatVal = true, workActivo = true;

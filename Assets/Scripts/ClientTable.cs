@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Newtonsoft.Json;
@@ -30,7 +30,7 @@ public class ClientTable : ClientData {
             columnInfo.nombre = string.Format(data[counter].nomEmpresa);
             columnInfo.direccion = string.Format(data[counter].direccion);
             columnInfo.email = string.Format(data[counter].email);
-            columnInfo.telefono = string.Format(data[counter].telefono);
+            columnInfo.telefono = data[counter].telefono;
         }
     }
 }
