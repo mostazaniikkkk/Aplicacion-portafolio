@@ -88,11 +88,11 @@ public abstract class RegisterData : Window{
         File.WriteAllText("cliente.json", data);
     }
     IEnumerator Request(string json, string url){
-        using UnityWebRequest request = UnityWebRequest.Post(url, "POST");
-        request.SetRequestHeader("Content-Type", "application/json");
+        var request = new UnityWebRequest(url, "POST");
         byte[] jsonData = Encoding.UTF8.GetBytes(json);
-        request.uploadHandler = new UploadHandlerRaw(jsonData);
-        request.downloadHandler = new DownloadHandlerBuffer();
+        request.uploadHandler = (UploadHandler) new UploadHandlerRaw(jsonData);
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
         yield return request.SendWebRequest();
 
         switch (request.result){
@@ -101,6 +101,13 @@ public abstract class RegisterData : Window{
                 break;
             case UnityWebRequest.Result.Success:
                 Debug.Log("SIUUUUUUUUUUUUUUUUUUUUUU");
+                break;
+            case UnityWebRequest.Result.DataProcessingError:
+                Debug.Log("Mostaza la wea no quiere procesar");
+                break;
+            case UnityWebRequest.Result.ProtocolError:
+                Debug.Log($"Error con el protocolo: {request.error}");
+                Debug.Log(url);
                 break;
             default:
                 Debug.Log("Toca revisar que paso xdn´t");

@@ -48,7 +48,7 @@ public class ClientRegister : RegisterData {
             SendData();
         }
     }
-    public override string JsonConstructor(){
+    public override string JsonConstructor() {
         List<Cliente> cliente = new List<Cliente> {
             new Cliente{
                 nomEmpresa = nombre,
@@ -56,16 +56,19 @@ public class ClientRegister : RegisterData {
                 email = email,
                 telefono = fono,
                 direccion = dir,
-                idComuna = comuna,
-                flagActivo = "1",
+                idComuna = 1101,
+                flagActivo = null,
                 fechaCreacion = DateTime.Today,
                 rutEmpresa = rutExtract,
                 dvEmpresa = rutVer,
-                idRubro = rubro,
+                idRubro = 1,
                 estado = null
             }
         };
         string generatedJson = JsonConvert.SerializeObject(cliente.ToArray(), Formatting.Indented);
+        generatedJson = generatedJson.Replace("[", string.Empty);
+        generatedJson = generatedJson.Replace("]", string.Empty);
+        //string generatedJson = JsonUtility.ToJson(cliente.ToArray());
 
         SendRequest(generatedJson, controller.GetComponent<Controller>().dataUrl + url);
         Debug.Log(generatedJson);

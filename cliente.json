@@ -1,17 +1,16 @@
-[
+
   {
     "idEmpresa": 0,
-    "nomEmpresa": "atata​",
-    "fechaInicio": "2022-12-13T00:00:00-03:00",
-    "direccion": "atata 123​",
-    "email": "asd@.as​",
+    "nomEmpresa": "afds sa​",
+    "fechaInicio": "2022-12-14T00:00:00-03:00",
+    "direccion": "las calles 123​",
+    "email": "afds@sa.cl​",
     "telefono": 0,
-    "flagActivo": "1",
-    "fechaCreacion": "2022-12-13T00:00:00-03:00",
-    "rutEmpresa": "123456789",
-    "dvEmpresa": "0",
-    "idComuna": 0,
-    "idRubro": 0,
+    "flagActivo": null,
+    "fechaCreacion": "2022-12-14T00:00:00-03:00",
+    "rutEmpresa": "20576543",
+    "dvEmpresa": "2",
+    "idComuna": 1101,
+    "idRubro": 1,
     "estado": null
   }
-]
